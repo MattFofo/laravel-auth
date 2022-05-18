@@ -16,7 +16,7 @@ class PostSeeder extends Seeder
     public function run(Faker $faker)
     {
         for ($i=0; $i < 250 ; $i++) {
-            $title = $faker->words(rand(2, 10), true);
+            $title = $faker->words(rand(2, 5), true);
 
             $postData = [
                 'title'     => $title,
