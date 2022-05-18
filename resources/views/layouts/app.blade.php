@@ -50,7 +50,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
@@ -66,8 +66,10 @@
                                     </form>
                                 </div>
                             </li>
-                            <li>
-                                <a href="{{ route('admin.posts.index') }}">Index</a>
+
+                            {{-- posts.index --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.index') }}">Index</a>
                             </li>
                         @endguest
                     </ul>
