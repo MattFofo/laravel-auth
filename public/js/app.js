@@ -40130,7 +40130,8 @@ var app = new Vue({
   el: '#app'
 }); //delete overlay confirmation
 
-var eleConfirmationDelete = document.querySelector('#confirmation-delete'); // if (eleConfirmationDelete) {
+var eleConfirmationDelete = document.querySelector('#confirmation-delete');
+var eleBtnNotDelete = document.querySelector('#btn-not-delete'); // if (eleConfirmationDelete) {
 
 document.querySelectorAll('.btn-delete').forEach(function (element) {
   element.addEventListener('click', function () {
@@ -40141,6 +40142,10 @@ document.querySelectorAll('.btn-delete').forEach(function (element) {
     eleConfirmationDelete.classList.toggle('invisible');
   });
 }); // }
+
+eleBtnNotDelete.addEventListener('click', function () {
+  eleConfirmationDelete.classList.toggle('invisible');
+});
 
 /***/ }),
 

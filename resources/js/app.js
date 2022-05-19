@@ -38,6 +38,8 @@ const app = new Vue({
 //delete overlay confirmation
 
 const eleConfirmationDelete = document.querySelector('#confirmation-delete');
+const eleBtnNotDelete = document.querySelector('#btn-not-delete');
+
 
 // if (eleConfirmationDelete) {
     document.querySelectorAll('.btn-delete').forEach(element => {
@@ -51,3 +53,8 @@ const eleConfirmationDelete = document.querySelector('#confirmation-delete');
         })
     });
 // }
+
+
+eleBtnNotDelete.addEventListener('click', function () {
+    eleConfirmationDelete.classList.toggle('invisible');
+})
