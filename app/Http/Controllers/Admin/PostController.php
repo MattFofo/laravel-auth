@@ -27,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -38,7 +38,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $postData = $request->all();
+
+        $post = Post::create($postData);
+
+        return redirect()->route('admin.posts.show', $post);
+
     }
 
     /**

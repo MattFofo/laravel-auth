@@ -71,6 +71,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.posts.index') }}">Index</a>
                             </li>
+                            {{-- posts.create --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.create') }}">New Post</a>
+                            </li>
                         @endguest
                     </ul>
                 </div>
