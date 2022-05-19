@@ -7,8 +7,8 @@
                 <th scope="col">#</th>
                 <th scope="col">Title</th>
                 <th scope="col">Slug</th>
-                <th scope="col">Created_at</th>
-                <th scope="col">Updated_at</th>
+                <th scope="col">Created at</th>
+                <th scope="col">Updated at</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
