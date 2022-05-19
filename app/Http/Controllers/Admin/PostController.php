@@ -107,8 +107,9 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($slug)
     {
+        $post = Post::where('slug', $slug);
         $post->delete();
 
         return redirect()->route('admin.posts.index');

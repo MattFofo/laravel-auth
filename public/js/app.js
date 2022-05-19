@@ -40128,7 +40128,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 
 var app = new Vue({
   el: '#app'
-});
+}); //delete overlay confirmation
+
+var eleConfirmationDelete = document.querySelector('#confirmation-delete'); // if (eleConfirmationDelete) {
+
+document.querySelectorAll('.btn-delete').forEach(function (element) {
+  element.addEventListener('click', function () {
+    var idFromSlug = element.closest('tr').dataset.id;
+    var formDelete = eleConfirmationDelete.querySelector('form');
+    var formDeleteAction = formDelete.dataset.base.replace('*****', idFromSlug);
+    formDelete.action = formDeleteAction;
+    eleConfirmationDelete.classList.toggle('invisible');
+  });
+}); // }
 
 /***/ }),
 

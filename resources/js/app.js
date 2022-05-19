@@ -33,3 +33,21 @@ const app = new Vue({
     el: '#app',
 });
 
+
+
+//delete overlay confirmation
+
+const eleConfirmationDelete = document.querySelector('#confirmation-delete');
+
+// if (eleConfirmationDelete) {
+    document.querySelectorAll('.btn-delete').forEach(element => {
+        element.addEventListener('click', function () {
+            const idFromSlug = element.closest('tr').dataset.id;
+            const formDelete = eleConfirmationDelete.querySelector('form');
+            const formDeleteAction = formDelete.dataset.base.replace('*****', idFromSlug);
+            formDelete.action = formDeleteAction;
+
+            eleConfirmationDelete.classList.toggle('invisible');
+        })
+    });
+// }
