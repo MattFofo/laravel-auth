@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    protected $validationRules = [
+        'title'     => 'required|max:100',
+        'slug'      => 'required|unique:posts|max:100',
+        'content'   => 'required'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +44,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate($this->validationRules);
+
         $postData = $request->all();
 
         $post = Post::create($postData);
