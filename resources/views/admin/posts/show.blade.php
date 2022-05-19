@@ -7,7 +7,7 @@
                 <h1>{{ $post->title }}</h1>
                 <small>{{ date('d/m/Y' , strtotime($post->created_at)) }}</small>
 
-                {{-- post updated --}}
+                {{-- if post updated --}}
                 @if ($post->created_at != $post->updated_at)
                     <small>{{ date('d/m/Y' , strtotime($post->updated_at)) }}</small>
                 @endif
