@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -74,6 +75,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
+
         return view('admin.posts.edit', compact('post'));
     }
 
@@ -86,6 +89,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        if (Auth::user()->id !== $post->user_id) abort(403);
+
         $this->validationRules['slug'] = [
            ' required',
            Rule::unique('posts')->ignore($post),
@@ -107,11 +112,13 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy($slug)
+    public function destroy(Post $post)
     {
-        $post = Post::where('slug', $slug);
+        if (Auth::user()->id !== $post->user_id) abort(403);
+
+        // $post = Post::where('slug', $slug);
         $post->delete();
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.home');
     }
 }
