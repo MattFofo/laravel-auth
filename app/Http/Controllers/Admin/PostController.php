@@ -48,10 +48,9 @@ class PostController extends Controller
     {
         $request->validate($this->validationRules);
 
-        $postData = $request->all();
+        $postData = $request->all() + ['user_id' => Auth::id()];
 
         $post = Post::create($postData);
-
         return redirect()->route('admin.posts.show', $post);
 
     }
@@ -103,7 +102,7 @@ class PostController extends Controller
 
         $post->update($postData);
 
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index', $post);
     }
 
     /**
@@ -119,6 +118,6 @@ class PostController extends Controller
         // $post = Post::where('slug', $slug);
         $post->delete();
 
-        return redirect()->route('admin.home');
+        return redirect()->route('admin.home',  $post);
     }
 }

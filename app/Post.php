@@ -11,7 +11,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        'user_id'
     ];
 
     //metodo per generare slug unico da stringa
