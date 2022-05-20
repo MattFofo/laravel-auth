@@ -20,6 +20,12 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('slug', 100)->unique();
 
+            //relazione con la tabella users
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users');
+
         });
     }
 

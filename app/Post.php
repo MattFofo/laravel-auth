@@ -26,4 +26,11 @@ class Post extends Model
         }
         return $slug;
     }
+
+
+    //relazione con tabella users
+
+    public function user() {
+        return $this->belongsTo('App\User');
+    }
 }
