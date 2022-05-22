@@ -16,6 +16,12 @@ class PostController extends Controller
         'content'   => 'required'
     ];
 
+    public function myindex() {
+        $posts = Post::where('user_id', Auth::id())->paginate(10);
+
+        return view('admin.posts.index', compact('posts'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -102,7 +108,7 @@ class PostController extends Controller
 
         $post->update($postData);
 
-        return redirect()->route('admin.posts.index', $post);
+        return redirect()->route('admin.posts.show', $post);
     }
 
     /**
