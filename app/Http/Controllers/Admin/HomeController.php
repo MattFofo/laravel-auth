@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
+
 class HomeController extends Controller
 {
     /**
@@ -24,7 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(1);
+
+        return view('admin.home', compact('posts'));
     }
 
     public function getSlug(Request $request) {
