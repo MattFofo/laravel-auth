@@ -68,11 +68,20 @@
                                 </div>
                             </li>
 
-                            {{-- posts.index --}}
+
+                            {{-- dashboard --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.posts.index') }}">Index</a>
+                                <a class="nav-link" href="{{ route('admin.home') }}">Dashboard</a>
                             </li>
-                            {{-- posts.create --}}
+                            {{-- admin.posts.myindex --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.myindex') }}">My Posts</a>
+                            </li>
+                            {{-- admin.posts.index --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.posts.index') }}">All Posts</a>
+                            </li>
+                            {{-- admin.posts.create --}}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.posts.create') }}">New Post</a>
                             </li>
