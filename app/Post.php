@@ -8,6 +8,13 @@ use Illuminate\Support\Str;
 
 class Post extends Model
 {
+
+    //metodo per utilizare lo slug (o quello ceh si vuole) come identificativo del post per la route
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
+
     protected $fillable = [
         'title',
         'content',
