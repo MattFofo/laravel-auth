@@ -35,9 +35,14 @@ class Post extends Model
         return $slug;
     }
 
+    static public function validateSlug($str) {
+        if (strpos($str, ' ')) {
+            $str = str_replace(' ', '-', $str);
+        }
+        return $str;
+    }
 
     //relazione con tabella users
-
     public function user() {
         return $this->belongsTo('App\User');
     }

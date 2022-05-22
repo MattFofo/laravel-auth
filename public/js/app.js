@@ -40148,15 +40148,12 @@ if (eleConfirmationDelete) {
     eleConfirmationDelete.classList.toggle('invisible');
   });
 } //sostituire spazi bianchi dello slug
-
-
-var eleSlug = document.querySelector('#slug');
-
-if (eleSlug) {
-  document.querySelector('.btn').addEventListener('click', function () {
-    eleSlug.value = eleSlug.value.replace(/ /g, '-');
-  });
-}
+// const eleSlug = document.querySelector('#slug');
+// if (eleSlug) {
+//     document.querySelector('.btn').addEventListener('click', function () {
+//         eleSlug.value = eleSlug.value.replace(/ /g, '-');
+//     })
+// }
 
 /***/ }),
 

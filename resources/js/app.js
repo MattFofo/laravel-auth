@@ -64,11 +64,11 @@ if (eleConfirmationDelete) {
 
 
 //sostituire spazi bianchi dello slug
-const eleSlug = document.querySelector('#slug');
+// const eleSlug = document.querySelector('#slug');
 
-if (eleSlug) {
-    document.querySelector('.btn').addEventListener('click', function () {
-        eleSlug.value = eleSlug.value.replace(/ /g, '-');
-    })
+// if (eleSlug) {
+//     document.querySelector('.btn').addEventListener('click', function () {
+//         eleSlug.value = eleSlug.value.replace(/ /g, '-');
+//     })
 
-}
+// }

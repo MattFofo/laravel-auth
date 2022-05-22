@@ -56,6 +56,8 @@ class PostController extends Controller
 
         $postData = $request->all() + ['user_id' => Auth::id()];
 
+        $postData['slug'] = Post::validateSlug($postData['slug']);
+
         $post = Post::create($postData);
         return redirect()->route('admin.posts.show', $post);
 
@@ -105,6 +107,8 @@ class PostController extends Controller
         $request->validate($this->validationRules);
 
         $postData = $request->all();
+
+        $postData['slug'] = Post::validateSlug($postData['slug']);
 
         $post->update($postData);
 
