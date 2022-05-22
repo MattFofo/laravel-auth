@@ -60,9 +60,6 @@ if (eleConfirmationDelete) {
 
 
 
-
-
-
 //sostituire spazi bianchi dello slug
 // const eleSlug = document.querySelector('#slug');
 
@@ -72,3 +69,18 @@ if (eleConfirmationDelete) {
 //     })
 
 // }
+
+
+//generate slug
+const btnGenerateSlug = document.querySelector('#generateSlug');
+
+if (btnGenerateSlug) {
+    const eleSlug = document.querySelector('#slug');
+
+
+    btnGenerateSlug.addEventListener('click', function () {
+        const postTitle = document.querySelector('#title').value;
+        eleSlug.value = postTitle.replace(/ /g, '-');
+
+    })
+}

@@ -16,6 +16,7 @@
             <div class="form-group">
                 <label for="slug">Slug</label>
                 <input type="text" class="form-control" id="slug" name="slug" placeholder="slug">
+                <button type="button" class="btn btn-primary" id="generateSlug">Generate Slug</button>
             </div>
             @error('slug')
                 <div class="alert alert-danger">{{ $message }}</div>

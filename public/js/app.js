@@ -40154,6 +40154,18 @@ if (eleConfirmationDelete) {
 //         eleSlug.value = eleSlug.value.replace(/ /g, '-');
 //     })
 // }
+//generate slug
+
+
+var btnGenerateSlug = document.querySelector('#generateSlug');
+
+if (btnGenerateSlug) {
+  var eleSlug = document.querySelector('#slug');
+  btnGenerateSlug.addEventListener('click', function () {
+    var postTitle = document.querySelector('#title').value;
+    eleSlug.value = postTitle.replace(/ /g, '-');
+  });
+}
 
 /***/ }),
 
