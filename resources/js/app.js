@@ -37,11 +37,12 @@ const app = new Vue({
 
 //delete overlay confirmation
 
-const eleConfirmationDelete = document.querySelector('#confirmation-delete');
-const eleBtnNotDelete = document.querySelector('#btn-not-delete');
-const formDelete = eleConfirmationDelete.querySelector('form');
 
+const eleConfirmationDelete = document.querySelector('#confirmation-delete');
 if (eleConfirmationDelete) {
+
+    const eleBtnNotDelete = document.querySelector('#btn-not-delete');
+    const formDelete = eleConfirmationDelete.querySelector('form');
     document.querySelectorAll('.btn-delete').forEach(element => {
         element.addEventListener('click', function () {
             const idFromSlug = element.closest('tr').dataset.id;
@@ -51,10 +52,23 @@ if (eleConfirmationDelete) {
             eleConfirmationDelete.classList.toggle('invisible');
         })
     });
+    eleBtnNotDelete.addEventListener('click', function () {
+        formDelete.action = '';
+        eleConfirmationDelete.classList.toggle('invisible');
+    })
 }
 
 
-eleBtnNotDelete.addEventListener('click', function () {
-    formDelete.action = '';
-    eleConfirmationDelete.classList.toggle('invisible');
-})
+
+
+
+
+//sostituire spazi bianchi dello slug
+const eleSlug = document.querySelector('#slug');
+
+if (eleSlug) {
+    document.querySelector('.btn').addEventListener('click', function () {
+        eleSlug.value = eleSlug.value.replace(/ /g, '-');
+    })
+
+}

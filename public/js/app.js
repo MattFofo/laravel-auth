@@ -40131,21 +40131,32 @@ var app = new Vue({
 }); //delete overlay confirmation
 
 var eleConfirmationDelete = document.querySelector('#confirmation-delete');
-var eleBtnNotDelete = document.querySelector('#btn-not-delete'); // if (eleConfirmationDelete) {
 
-document.querySelectorAll('.btn-delete').forEach(function (element) {
-  element.addEventListener('click', function () {
-    var idFromSlug = element.closest('tr').dataset.id;
-    var formDelete = eleConfirmationDelete.querySelector('form');
-    var formDeleteAction = formDelete.dataset.base.replace('*****', idFromSlug);
-    formDelete.action = formDeleteAction;
+if (eleConfirmationDelete) {
+  var eleBtnNotDelete = document.querySelector('#btn-not-delete');
+  var formDelete = eleConfirmationDelete.querySelector('form');
+  document.querySelectorAll('.btn-delete').forEach(function (element) {
+    element.addEventListener('click', function () {
+      var idFromSlug = element.closest('tr').dataset.id;
+      var formDeleteAction = formDelete.dataset.base.replace('*****', idFromSlug);
+      formDelete.action = formDeleteAction;
+      eleConfirmationDelete.classList.toggle('invisible');
+    });
+  });
+  eleBtnNotDelete.addEventListener('click', function () {
+    formDelete.action = '';
     eleConfirmationDelete.classList.toggle('invisible');
   });
-}); // }
+} //sostituire spazi bianchi dello slug
 
-eleBtnNotDelete.addEventListener('click', function () {
-  eleConfirmationDelete.classList.toggle('invisible');
-});
+
+var eleSlug = document.querySelector('#slug');
+
+if (eleSlug) {
+  document.querySelector('.btn').addEventListener('click', function () {
+    eleSlug.value = eleSlug.value.replace(/ /g, '-');
+  });
+}
 
 /***/ }),
 
