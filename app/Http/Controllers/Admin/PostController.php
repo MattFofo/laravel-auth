@@ -15,7 +15,7 @@ class PostController extends Controller
         'title'     => 'required|max:100',
         'slug'      => 'required|unique:posts|max:100',
         'content'   => 'required',
-        'category_id'  => 'required|exists:categories,id',
+        'category_id'  => 'exists:categories,id',
     ];
 
     public function myindex() {
@@ -118,7 +118,7 @@ class PostController extends Controller
 
         $post->update($postData);
 
-        return redirect()->route('admin.posts.show', $post);
+        return redirect()->route('admin.posts.show', $post)->with('status', "Post: $post->id edited succesfully");;
     }
 
     /**
