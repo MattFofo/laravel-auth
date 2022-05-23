@@ -57,7 +57,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate($this->validationRules); //TODO: blocca l'esecuzione se la slug non è unica prima che il metodo validateSlug() possa cambiarla
+        // $request->validate($this->validationRules); //TODO: blocca l'esecuzione se la slug non è unica prima che il metodo validateSlug() possa cambiarla
 
         $postData = $request->all() + ['user_id' => Auth::id()];
 
@@ -91,12 +91,10 @@ class PostController extends Controller
         if (Auth::user()->id !== $post->user_id) abort(403);
 
         $categories = Category::all();
-        $selectedCategory = $post->category->name;
 
         return view('admin.posts.edit', [
             'post'              => $post,
             'categories'        => $categories,
-            'selectedCategory'  => $selectedCategory
         ]);
     }
 

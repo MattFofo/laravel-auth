@@ -36,16 +36,19 @@ class Post extends Model
         return $slug;
     }
 
+    //metodo per validare slug scelto dall'utente
     static public function validateSlug($strSlug) {
+        $baseSlug = $strSlug;
+        $slug = $baseSlug;
         $i = 1;
-        if (strpos($strSlug, ' ')) {
-            $strSlug = str_replace(' ', '-', $strSlug);
+        if (strpos($slug, ' ')) {
+            $slug = str_replace(' ', '-', $slug);
         }
-        while (self::where('slug', $strSlug)->first()) {
-            $strSlug = "$strSlug-$i";
+        while (self::where('slug', $slug)->first()) {
+            $slug = "$baseSlug-$i";
             $i++;
         }
-        return $strSlug;
+        return $slug;
     }
 
     //relazione con tabella users
