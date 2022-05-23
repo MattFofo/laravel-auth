@@ -14,7 +14,8 @@ class PostController extends Controller
     protected $validationRules = [
         'title'     => 'required|max:100',
         'slug'      => 'required|unique:posts|max:100',
-        'content'   => 'required'
+        'content'   => 'required',
+        'category_id'  => 'required|exists:categories,id',
     ];
 
     public function myindex() {
