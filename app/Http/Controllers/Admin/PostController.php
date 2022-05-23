@@ -15,7 +15,7 @@ class PostController extends Controller
         'title'     => 'required|max:100',
         'slug'      => 'required|unique:posts|max:100',
         'content'   => 'required',
-        'category_id'  => 'exists:categories,id',
+        'category_id'  => 'required|exists:categories,id', //TODO: se metto il parametro 'required' il metodo updated va in crisi
     ];
 
     public function myindex() {
@@ -90,7 +90,14 @@ class PostController extends Controller
     {
         if (Auth::user()->id !== $post->user_id) abort(403);
 
-        return view('admin.posts.edit', compact('post'));
+        $categories = Category::all();
+        $selectedCategory = $post->category->name;
+
+        return view('admin.posts.edit', [
+            'post'              => $post,
+            'categories'        => $categories,
+            'selectedCategory'  => $selectedCategory
+        ]);
     }
 
     /**

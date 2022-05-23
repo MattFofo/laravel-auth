@@ -13,6 +13,7 @@
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
             <div class="form-group">
                 <label for="slug">{{ __('Slug') }}</label>
                 <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{ old('slug')}}">
@@ -23,7 +24,6 @@
             @enderror
 
             {{-- categories --}}
-
             <select class="form-select" aria-label="Default select example" name="category_id" id="category">
                 <option value="">Select a category</option>
 
@@ -34,6 +34,7 @@
             @error('category_id')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
             <div class="form-group">
                 <label for="content">{{ __('Description') }}</label>
                 <textarea class="form-control" id="content" rows="4" placeholder="content" name="content">{{ old('content')}}</textarea>

@@ -22,6 +22,23 @@
             @error('slug')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
+            {{-- categories --}}
+            <select class="form-select" aria-label="Default select example" name="category_id" id="category">
+                {{-- <option value="{{ $post->category->id }}">{{ $post->category->name }}</option> --}}
+
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}"
+                        @if ($category->id == old('category_id')) selected @endif
+                        @if ($category->name == old('category_name')) selected @endif>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('category_id')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
             <div class="form-group">
                 <label for="content">Description</label>
                 <textarea class="form-control" id="content" rows="4" placeholder="content" name="content">{{ old(('content'), $post->content) }}</textarea>
