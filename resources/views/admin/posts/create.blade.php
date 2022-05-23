@@ -8,14 +8,14 @@
             @csrf
             <div class="form-group">
                 <label for="title">Post title</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                <input type="text" class="form-control" id="title" name="title" placeholder="title" value="{{ old('title')}}">
             </div>
             @error('title')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="form-group">
                 <label for="slug">Slug</label>
-                <input type="text" class="form-control" id="slug" name="slug" placeholder="slug">
+                <input type="text" class="form-control" id="slug" name="slug" placeholder="slug" value="{{ old('slug')}}">
                 <button type="button" class="btn btn-primary" id="generateSlug">Generate Slug</button>
             </div>
             @error('slug')
@@ -23,7 +23,7 @@
             @enderror
             <div class="form-group">
                 <label for="content">Description</label>
-                <textarea class="form-control" id="content" rows="4" placeholder="content" name="content"></textarea>
+                <textarea class="form-control" id="content" rows="4" placeholder="content" name="content">{{ old('content')}}</textarea>
             </div>
             @error('content')
                 <div class="alert alert-danger">{{ $message }}</div>

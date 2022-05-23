@@ -17,7 +17,7 @@ class PostController extends Controller
     ];
 
     public function myindex() {
-        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(10);
+        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(3);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -52,13 +52,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate($this->validationRules);
+
+        $request->validate($this->validationRules); //TODO: blocca l'esecuzione se la slug non è unica prima che il metodo validateSlug() possa cambiarla
 
         $postData = $request->all() + ['user_id' => Auth::id()];
 
         $postData['slug'] = Post::validateSlug($postData['slug']);
 
         $post = Post::create($postData);
+
         return redirect()->route('admin.posts.show', $post);
 
     }

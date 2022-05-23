@@ -35,11 +35,16 @@ class Post extends Model
         return $slug;
     }
 
-    static public function validateSlug($str) {
-        if (strpos($str, ' ')) {
-            $str = str_replace(' ', '-', $str);
+    static public function validateSlug($strSlug) {
+        $i = 1;
+        if (strpos($strSlug, ' ')) {
+            $strSlug = str_replace(' ', '-', $strSlug);
         }
-        return $str;
+        while (self::where('slug', $strSlug)->first()) {
+            $strSlug = "$strSlug-$i";
+            $i++;
+        }
+        return $strSlug;
     }
 
     //relazione con tabella users
