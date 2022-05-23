@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(5);
+        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(3);
 
         return view('admin.home', compact('posts'));
     }

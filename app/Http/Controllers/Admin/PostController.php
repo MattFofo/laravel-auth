@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
     ];
 
     public function myindex() {
-        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(3);
+        $posts = Post::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(20);
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -41,7 +42,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+
+        return view('admin.posts.create', compact('categories'));
     }
 
     /**
@@ -130,6 +133,7 @@ class PostController extends Controller
         // $post = Post::where('slug', $slug);
         $post->delete();
 
-        return redirect()->route('admin.home',  $post);
+        return redirect(route('admin.home'))->with('status', "Post: $post->title deleted");
     }
+
 }
