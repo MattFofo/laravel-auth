@@ -21,10 +21,13 @@ class CreatePostsTable extends Migration
             $table->string('slug', 100)->unique();
 
             //relazione con la tabella users
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')
+                ->nullable();
+                // ->after('id');
             $table->foreign('user_id')
                     ->references('id')
-                    ->on('users');
+                    ->on('users')
+                    ->onDelete('SET NULL');
 
         });
     }

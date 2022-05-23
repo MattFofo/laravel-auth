@@ -8,6 +8,10 @@ class InfoUser extends Model
 {
     public $timestamps = false;
 
+    protected $fillable = [
+        'address', 'phone', 'birth',
+    ];
+
     public function user() {
         return $this->belongsTo('App/User');
     }

@@ -19,7 +19,8 @@ class Post extends Model
         'title',
         'content',
         'slug',
-        'user_id'
+        'user_id',
+        'category_id'
     ];
 
     //metodo per generare slug unico da stringa
@@ -50,5 +51,9 @@ class Post extends Model
     //relazione con tabella users
     public function user() {
         return $this->belongsTo('App\User');
+    }
+
+    public function category() {
+        return $this->belongsTo('App\Category');
     }
 }
